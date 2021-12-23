@@ -19,16 +19,16 @@ docker exec -it <ID_CONTAINER> sh
 mysql -uroot -proot
 ```
 
-# Pronto, você já está dentro do mysql! 
+## Pronto, você já está dentro do mysql! 
 
 Para visualizar os dados do banco de dados, siga essas etapas:
 
-- verificando todos bd
+- verificando todos db
 ```
 show databases;
 ```
 
-- ativando bd para acessar a tabela people.
+- ativando db para acessar a tabela people.
 ```
 use full_cycle;
 ```
