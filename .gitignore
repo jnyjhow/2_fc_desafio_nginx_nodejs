@@ -1,3 +1,7 @@
 tutorial.md
-node_modules/
-db_data/
+nodejs/node_modules/
+mysql/db_data/
+nodejs/db_aux2.js
+nodejs/people.js
+nodejs/.docker/
+nodejs/db.js

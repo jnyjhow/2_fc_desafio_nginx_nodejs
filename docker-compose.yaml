@@ -22,7 +22,10 @@ services:
     container_name: fc_nodejs
     build: ./nodejs
     tty: true
-    entrypoint: dockerize -wait tcp://mysql:3306 -timeout 20s node index.js #aguardando container
+    #aguardando container
+    entrypoint: dockerize -wait tcp://mysql:3306 -timeout 20s node index.js
+    #entrypoint: dockerize -wait tcp://mysql:3306 -timeout 20s ./.docker/entrypoint.sh
+    #entrypoint: ./.docker/entrypoint.sh
     volumes:
       - ./nodejs:/home/node/app
       - /home/node/app/node_modules

@@ -1,7 +1,10 @@
 const express = require("express");
 const mysql = require("mysql");
+const getPeople = "SELECT nome FROM people";
 
 const port = 3000;
+
+const app = express();
 
 const conn = mysql.createConnection({
   host: "fc_mysql",
@@ -19,16 +22,27 @@ conn.connect((err) => {
   console.log("Mysql connection successful!");
 
   //inserindo dados no db
-  const sql = "INSERT INTO people(nome) VALUES('Jhonatan')";
+  const sql = "INSERT INTO people(nome) VALUES('Jhonatan Yamane')";
   conn.query(sql);
-  conn.end();
-
 });
 
-const app = express();
-
 app.get("/", (_, res) => {
-  res.send("<h1>Full Cycle Rocks!</h1>");
+  //declarando variavel para armazenar codigo html
+  var finalResult =
+    "<h1>Full Cycle Rocks!!!</h1><h2>Lista de Nomes Cadastrados no BD: </h2><ul>";
+
+  conn.query(getPeople, function (err, result, fields) {
+    if (err) throw err;
+    console.log("Result:" + result);
+    result.forEach((element) => {
+      finalResult = finalResult + "<li>" + element.nome + "</li>";
+    });
+
+    finalResult = finalResult + "</ul>";
+    console.log("FinalResult: " + finalResult);
+    res.send(finalResult);
+  });
+
 });
 
 app.listen(port, () => {
