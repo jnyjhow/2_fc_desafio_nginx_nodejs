@@ -12,6 +12,8 @@ WORKDIR /home/node/app
 COPY . .
 
 RUN npm install
+#RUN npm install -g nodemon
+#RUN nodemon -L
 ENTRYPOINT [ "node", "index.js" ]
 
 EXPOSE 3000
